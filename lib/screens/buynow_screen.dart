@@ -26,13 +26,8 @@ class BuyNow extends StatelessWidget {
           ElevatedButton(
               onPressed: (){},
               child: Text("Place Order"),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green[800],
-              minimumSize: Size(200,40)
-            )
           )
         ],
       ),
     );
-  }
-}
+  }}

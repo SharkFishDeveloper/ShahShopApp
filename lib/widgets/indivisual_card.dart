@@ -22,70 +22,73 @@ class IndivisualItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(40),
-      child: Container(
-        // indivisual item buidlding
-        margin: EdgeInsets.only(left: 10, right: 10),
-        width: 200,
-        child: Card(
-          elevation: 6,
-          color: Colors.yellow,
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Container(child: list_Of_ItemObj[index].image),
+      child: Card(
+        //margin: EdgeInsets.symmetric(horizontal: 20),
+        elevation: 6,
+        color: Colors.orange[50],
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Container(child: list_Of_ItemObj[index].image),
+                ),
+              ),
+              Text(
+                list_Of_ItemObj[index].desc,
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+              Row(
+                children: [
+                  Text(
+                    "\u{20B9}${list_Of_ItemObj[index].price.toString()}",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.blue[900]),
                   ),
-                ),
-                Text(
-                  list_Of_ItemObj[index].desc,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "\u{20B9}${list_Of_ItemObj[index].price.toString()}",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.blue),
-                    ),
-                    CircleAvatar(
-                        radius: 30,
-                        child: Text("${list_Of_ItemObj[index].rating}/5.0")),
-                  ],
-                ),
-                Container(
-                  width: 200,
-                  child: OutlinedButton(
-                      onPressed: () => startSheet(context),
-                      child: Text(
-                        "Add to cart",
-                        style: TextStyle(fontWeight: FontWeight.w900),
-                      )),
-                ),
-                Container(
-                  width: 200,
-                  child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    BuyNow(list_Of_ItemObj[index])));
-                      },
-                      child: Text("Buy Now",
-                          style: TextStyle(fontWeight: FontWeight.w900))),
-                )
-              ],
-            ),
+                  SizedBox(width: 80),
+                  CircleAvatar(
+                      backgroundColor: Colors.blue[900],
+                      radius: 30,
+                      child: Text("${list_Of_ItemObj[index].rating}/5.0")),
+                ],
+              ),
+              Container(
+                width: 200,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.orange[300]
+                  ),
+                    onPressed: () => startSheet(context),
+                    child: Text(
+                      "Add to cart",
+                      style: TextStyle(fontWeight: FontWeight.w900,color: Colors.blue[900]),
+                    )),
+              ),
+              Container(
+                width: 200,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.orange
+                  ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  BuyNow(list_Of_ItemObj[index])));
+                    },
+                    child: Text("Buy Now",
+                        style: TextStyle(fontWeight: FontWeight.w900,color:Colors.blue[900]))),
+              )
+            ],
           ),
         ),
       ),
-    );
+    )
     ;
   }
 }
